@@ -1,0 +1,73 @@
+* {
+
+    margin-top: 30px;
+    align-self: center;
+    font-size: 18px;
+  }
+  
+
+
+.bucket-table {
+    border-collapse: collapse;
+    margin: 3px;
+    width: 30%;
+    border-bottom: 2px solid lightgray;
+    min-width: 400px;
+    
+
+}
+
+.bucket-table th {
+    background-color: rgb(51, 54, 95);
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    padding: 5px
+    
+  }
+
+.inline-list{
+    display: flex;
+    display: inline;
+}
+
+  
+.tasks-table{
+    
+    
+    border-collapse: collapse;
+    margin:4px;
+    font-size: 16px;
+    width:100%;
+    
+
+}
+.tasks-table th{
+  
+  background-color: rgb(51, 54, 95);
+  color: white;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px
+}
+
+.taskBody{
+padding: 0px;
+margin: 2px;
+}
+
+
+.btn-delete{
+    margin-top: 0px;
+  }
+
+
+  .twoTables{
+    display:flex;
+  }
+
+  .taskDiv{
+    padding: 10px;
+    width:100%;
+
+  }

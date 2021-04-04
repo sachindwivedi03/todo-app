@@ -1,0 +1,118 @@
+<div>
+
+    <form (ngSubmit)="onFilter(filterForm)" #filterForm="ngForm" style=" margin: 10px">
+        <label for="Filter">Filter: </label>
+        <select id="status" name="status" ngModel required>
+            <option value="complete">complete</option>
+            <option value="WIP">WIP</option>
+            <option value="Pending">Pending</option>
+        </select>
+        <select id="priority" name="priority" ngModel required>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+        <button class="btn-normal" [disabled]="!filterForm.valid">Filter</button>
+    </form>
+    <div class="twoTables">
+        <div>
+            <table class="bucket-table" style="float: left">
+                <caption>
+                    <h1>Buckets</h1>
+                </caption>
+                <thead>
+                    <tr class="column-heading">
+                        <th>Sno.</th>
+                        <th>Bucket</th>
+                        <th>No of Tasks</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bucket of allBuckets; let i = index">
+                        <td>{{i +1}}</td>
+                        <td (click)="changeAllTasks(i)">{{bucket.bucketName}}</td>
+                        <td>{{bucket.task.length}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="taskDiv">
+            <div>
+                <table class="tasks-table" >
+                    <caption>
+                        <h1>Tasks</h1>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th >Sno.</th>
+                            <th style="width: 120px">Task</th>
+                            <th style="width: 120px" (click)="sortByDateCreated()">Date Created</th>
+                            <th style="width: 120px" (click)="sortByLastDate()">Last Date</th>
+                            <th >Status</th>
+                            <th >Priority</th>
+                            <th >Delete</th>
+                            <th >Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="taskBody" *ngFor="let task of allTasks; let i =index">
+                            <td >{{ (pageNumber - 1)*noOfResults + (i+1) }}</td>
+                            <td >{{task.task}}</td>
+                            <td>{{task.dateCreated}}</td>
+                            <td>{{task.lastDate}}</td>
+                            <td>{{task.status}}</td>
+                            <td>{{task.priority}}</td>
+                            <td>
+                                <form style="text-align: center;">
+                                    <input type="checkbox" name="taskSelect" autocomplete="off" id="taskSelect"
+                                        (change)="onCheckboxClicked(task.task)">
+                                </form>
+                            </td>
+                            <td>
+                                <button class="edit button" (click)="editTaskMethod(i)">Edit
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div>
+                <div class="pagination">
+                    <div>
+                        <button class="" [disabled]="start===0 ? true:false" (click)="showFirstPage()"
+                            style="margin-right: 10px">First</button>
+                        <button class="" [disabled]="start===0 ? true:false" (click)="showPreviousPage()"
+                            style="margin-right: 10px">Previous</button>
+                        <button class="" [disabled]="lastTask >= allBuckets[this.bucketIndex].task.length ? true:false"
+                            (click)="showNextPage()" style="margin-right: 10px">Next</button>
+                        <button class="" [disabled]="lastTask >= allBuckets[this.bucketIndex].task.length ? true:false"
+                            (click)="showLastPage()" style="margin-right: 10px">Last</button>
+
+                        <form (ngSubmit)="onSubmit(formNumber)" #formNumber="ngForm">
+                            <label for="paging">Results per page </label>
+                            <input placeholder="{{ noOfResults }}" type="number" id="paging" name="noOfResults" min="1"
+                                required ngModel>
+                            <button type="submit" [disabled]="!formNumber.valid">Submit</button>
+
+                        </form>
+                    </div>
+
+
+                </div>
+
+                <div>
+                    <button class="btn-delete" (click)="deleteTask()"> Delete
+                        Selected Tasks
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>

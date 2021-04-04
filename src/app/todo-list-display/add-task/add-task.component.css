@@ -1,0 +1,33 @@
+
+
+form{
+    width: 500px;
+    margin: auto;
+    margin-top: 80px;
+    padding: 50px;
+    border: rgb(0, 0, 0) 2px solid;
+    border-radius: 20px;
+    background-color: lightgray;
+}
+
+form select{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+form input{
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+button{
+    font-size: 20px;
+    margin: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    
+}

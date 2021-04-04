@@ -1,0 +1,70 @@
+
+<form (ngSubmit)="onSubmit(taskForm)" #taskForm="ngForm">
+    <h3>Add Task</h3>
+    <div>
+        <label for="Bucket name">Bucket Name</label>
+        <input 
+            placeholder="Bucket Name"
+            id="bucketName"
+            name="bucketName"
+            required
+            ngModel>
+    </div>
+    <div>
+        <label for="taskname">Task Name</label>
+        <input 
+            placeholder="Task"
+            id="taskName"
+            name="taskName"
+            required
+            ngModel>
+    </div>
+    <div>
+        <label for="dateCreated">Date Created</label>
+        <input 
+            placeholder="Date Created"
+            type="date"
+            id="dateCreated"
+            name="dateCreated"
+            required
+            ngModel>
+    </div>
+    <div>
+        <label for="lastDate">Last Date</label>
+        <input 
+            placeholder="last Date"
+            type="date"
+            id="lastDate"
+            name="lastDate"
+            required
+            ngModel>
+    </div>
+    <div>
+        <label for="status">Status</label>
+        <select 
+            id="status"
+            name="status"
+            required
+            ngModel>
+            <option value="Complete">Complete</option>
+            <option value="WIP">WIP</option>
+            <option value="Pending">Pending</option>
+        </select>
+    </div>
+    <div>
+        <label for="priority">Priority</label>
+        <select 
+            id="priority"
+            name="priority"
+            required
+            ngModel>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+        </select>
+    </div>
+
+    <button type="button.disabled" class="btn-normal" [disabled]="!taskForm.valid">Add Task</button>
+    <button type="button" (click)="clearForm()" class="btn-cancel">Clear</button>
+    
+</form>
